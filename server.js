@@ -51,7 +51,7 @@ app.get('/*', function (req, res) {
 
 // app.use(express.static('public'))
 
-app.use('/api', require('./api'))
+// app.use('/api', require('./api'))
 
 
 
@@ -101,43 +101,43 @@ app.get('/project06.html', function(req, res) {
 
 
 
-// --------------------  Database request -----------------------
-const pool = require('./db/configForUserData.js')
+// // --------------------  Database request -----------------------
+// const pool = require('./db/configForUserData.js')
 
-// All fetch request directly from react components need /api before route name
-app.get('/api/savedArticles', (request, response) => {
+// // All fetch request directly from react components need /api before route name
+// app.get('/api/savedArticles', (request, response) => {
   
-  const userID = request.user.id
+//   const userID = request.user.id
 
-  pool.query('SELECT * FROM products WHERE user_id=$1', [userID], (error, results) => {
-      if (error) {
-        throw error
-      }
-      response.status(200).json(results.rows)
-    })
-})
+//   pool.query('SELECT * FROM products WHERE user_id=$1', [userID], (error, results) => {
+//       if (error) {
+//         throw error
+//       }
+//       response.status(200).json(results.rows)
+//     })
+// })
 
-app.delete('/api/deleteArticles', (request, response) => {
+// app.delete('/api/deleteArticles', (request, response) => {
   
-  // Gets the product ID from the front end and matches it to one in the database
-  const productID = request.body.item.pid
+//   // Gets the product ID from the front end and matches it to one in the database
+//   const productID = request.body.item.pid
 
-  pool.query('DELETE FROM products WHERE pid=$1', [productID], (error, results) => {
-      if (error) {
-        throw error
-      }
-      response.status(200).json(results.rows)
-    })
-})
+//   pool.query('DELETE FROM products WHERE pid=$1', [productID], (error, results) => {
+//       if (error) {
+//         throw error
+//       }
+//       response.status(200).json(results.rows)
+//     })
+// })
 
 
 
-app.use('*', (req, res) => {
-  res.status(404).send('Not Found')
-})
+// app.use('*', (req, res) => {
+//   res.status(404).send('Not Found')
+// })
 
-app.use((err, req, res, next) => {
-  console.warn(err)
-  res.status(500).json({ error: err, message: err.message })
-})
+// app.use((err, req, res, next) => {
+//   console.warn(err)
+//   res.status(500).json({ error: err, message: err.message })
+// })
 
