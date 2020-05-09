@@ -7,8 +7,12 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const passport = require('passport')
 const cors = require('cors')
+const path = require('path');
+const favicon = require('express-favicon');
+const app = express();
 
-const app = express()
+
+app.use(favicon(__dirname + '/build/favicon.ico'));
 
 const PORT = process.env.PORT || 6000
 app.listen(PORT, () => {
@@ -34,7 +38,18 @@ app.use((req, res, next) => {
   res.locals.data = {}
   next()
 })
-app.use(express.static('public'))
+
+
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/ping', function (req, res) {
+ return res.send('pong');
+});
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+// app.use(express.static('public'))
 
 app.use('/api', require('./api'))
 
