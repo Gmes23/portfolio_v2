@@ -1,1 +1,0 @@
-{"version":3,"sources":["/Users/gm/Desktop/Programming/JavascriptProjects/gmPortfolio/client/src/components/Partials/nav.sass"],"names":[],"mappings":"AAGA,KACE,8BAAA,CACA,UAJc","file":"main.00190cc8.chunk.css","sourcesContent":["$font-stack:    Helvetica, sans-serif\n$primary-color: #333\n\nbody\n  font: 100% $font-stack\n  color: $primary-color\n"]}
