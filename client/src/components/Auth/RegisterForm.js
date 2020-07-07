@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { registerUser } from '../../actions/auth'
 import { connect } from 'react-redux'
 
+// login form to be updated
 class LoginForm extends Component {
   constructor() {
     super()
